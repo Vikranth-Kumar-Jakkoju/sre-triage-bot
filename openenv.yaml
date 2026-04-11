@@ -1,0 +1,27 @@
+version: "1.0.0"
+task: "cloud-sre-triage"
+framework: "openenv"
+entrypoint: "python inference.py"
+env_class: "server.sre_easy_environment:SREEasyEnvironment"
+
+tasks:
+  - id: "sre-triage-easy"
+    description: "Single service down — identify and restart the correct service"
+    difficulty: "easy"
+    env_class: "server.sre_easy_environment:SREEasyEnvironment"
+    max_steps: 5
+    score_range: [0, 1]
+
+  - id: "sre-triage-medium"
+    description: "DB connection pool exhaustion causing cascading failures — diagnose then remediate"
+    difficulty: "medium"
+    env_class: "server.sre_medium_environment:SREMediumEnvironment"
+    max_steps: 6
+    score_range: [0, 1]
+
+  - id: "sre-triage-hard"
+    description: "Cascading failure from bad deployment — multi-step root-cause analysis and resolution"
+    difficulty: "hard"
+    env_class: "server.sre_hard_environment:SREHardEnvironment"
+    max_steps: 8
+    score_range: [0, 1]
