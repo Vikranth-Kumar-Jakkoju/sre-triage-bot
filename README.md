@@ -1,3 +1,12 @@
+---
+title: SRE Triage Bot
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+---
+
 # Cloud SRE Triage Environment
 
 An OpenEnv RL environment simulating real-world Site Reliability Engineering

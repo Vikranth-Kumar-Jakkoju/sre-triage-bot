@@ -20,11 +20,13 @@ RUN pip install --no-cache-dir \
     "pydantic>=2.0.0" \
     "requests>=2.28.0"
 
-# Copy project files
+# Copy all project files into /app
 COPY . .
 
-# Hugging Face Spaces require port 7860
+# Make sure Python can find the root-level modules (models.py etc.)
+ENV PYTHONPATH=/app
+
 EXPOSE 7860
 
-# Use server.app:app — openenv create_app() wires all required endpoints
+# Run from /app so both `server/` package and `models.py` are importable
 CMD ["uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860", "--log-level", "info"]
